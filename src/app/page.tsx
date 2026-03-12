@@ -1,6 +1,14 @@
+"use client"
+
 import Image from "next/image";
+import { Alert, AlertActions, AlertBody, AlertDescription, AlertTitle } from "../components/alert";
+import { useState } from "react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/table";
+import { Avatar } from "../components/avatar";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
@@ -43,7 +51,7 @@ export default function Home() {
           >
             <Image
               className="dark:invert"
-              src="/vercel.svg"
+              src="default/vercel.svg"
               alt="Vercel logomark"
               width={16}
               height={16}
@@ -59,6 +67,72 @@ export default function Home() {
             Documentation
           </a>
         </div>
+          <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+            {/* Create Alert! */}
+            <button onClick={() => setIsOpen(true)} className="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded">
+                Open Alert
+            </button>
+
+            <Alert open={isOpen} onClose={() => setIsOpen(false)}>
+              <AlertTitle>Warning</AlertTitle>
+              <AlertDescription>Your layout is now fixed!</AlertDescription>
+              <AlertBody>
+                <p>This is a simple alert body.</p>
+              </AlertBody>
+              <AlertActions>
+                <button onClick={() => setIsOpen(false)}>Close</button>
+              </AlertActions>
+            </Alert>
+            <Table className="mt-4 [--gutter:--spacing(6)] lg:[--gutter:--spacing(10)]">
+              <TableHead>
+                <TableRow>
+                  <TableHeader>Order number</TableHeader>
+                  <TableHeader>Purchase date</TableHeader>
+                  <TableHeader>Customer</TableHeader>
+                  <TableHeader>Event</TableHeader>
+                  <TableHeader className="text-right">Amount</TableHeader>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow key="01" href="#" title="View order details">
+                  <TableCell>01</TableCell>
+                  <TableCell className="text-zinc-500">10-11-2023</TableCell>
+                  <TableCell>Order Article</TableCell>
+                  <TableCell>
+                    <div className="flex items-center gap-2">
+                      <Avatar src="flags/us.svg" className="size-6" />
+                      <span>Event Name</span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-right">100.00$</TableCell>
+                </TableRow>
+                <TableRow key="02" href="#" title="View order details">
+                  <TableCell>02</TableCell>
+                  <TableCell className="text-zinc-500">10-11-2023</TableCell>
+                  <TableCell>Order Article</TableCell>
+                  <TableCell>
+                    <div className="flex items-center gap-2">
+                      <Avatar src="flags/ca.svg" className="size-6" />
+                      <span>Event Name</span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-right">50.00$</TableCell>
+                </TableRow>
+                <TableRow key="03" href="#" title="View order details">
+                  <TableCell>03</TableCell>
+                  <TableCell className="text-zinc-500">10-11-2023</TableCell>
+                  <TableCell>Order Article</TableCell>
+                  <TableCell>
+                    <div className="flex items-center gap-2">
+                      <Avatar src="flags/mx.svg" className="size-6" />
+                      <span>Event Name</span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-right">20.00$</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
       </main>
     </div>
   );

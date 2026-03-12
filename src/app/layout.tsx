@@ -1,3 +1,4 @@
+ // <--- Add this at the very top (Line 1)
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -22,11 +23,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
-        <h3 className="text-3xl font-sans text-black dark:text-zinc-50 text-center"> TAILWIND CENTER TEXT </h3>
       </body>
     </html>
   );
