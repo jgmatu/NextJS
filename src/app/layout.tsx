@@ -24,10 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+        <h3 className="text-3xl font-sans text-black dark:text-zinc-50 text-center"> TAILWIND CENTER TEXT </h3>
       </body>
     </html>
   );
