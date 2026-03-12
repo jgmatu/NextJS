@@ -5,6 +5,7 @@ import { Alert, AlertActions, AlertBody, AlertDescription, AlertTitle } from "..
 import { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/table";
 import { Avatar } from "../components/avatar";
+import { Button } from "../components/button";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -132,6 +133,11 @@ export default function Home() {
                 </TableRow>
               </TableBody>
             </Table>
+          </div>
+          <div className="flex gap-4 p-8">
+            <Button color="indigo">Edit </Button>
+            <Button color="red">Delete</Button>
+            <Button color="blue">Cancel</Button>
           </div>
       </main>
     </div>
